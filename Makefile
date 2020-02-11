@@ -4,12 +4,12 @@ VERSION=$(shell wget -qO- http://git.haproxy.org/git/haproxy-${MAINVERSION}.git/
 ifeq ("${VERSION}","./")
         VERSION="${MAINVERSION}.0"
 endif
-RELEASE=1
+RELEASE=2
 
 all: build
 
 install_prereq:
-	sudo yum install -y pcre-devel make gcc openssl-devel rpm-build systemd-devel wget sed zlib-devel
+	yum install -y pcre-devel make gcc openssl-devel rpm-build systemd-devel wget sed zlib-devel
 
 clean:
 	rm -f ./SOURCES/haproxy-${VERSION}.tar.gz
