@@ -6,14 +6,14 @@ Perform the following on a build box as a regular user.
 
 ## Install Prerequisites for RPM Creation
 
-    sudo yum groupinstall 'Development Tools'
+    yum groupinstall 'Development Tools'
 
 ## Checkout this repository
 
     cd /opt
     git clone https://github.com/DBezemer/rpm-haproxy.git 
     cd ./rpm-haproxy
-    git checkout 1.8
+    git checkout 1.9
 
 ## Build using makefile
     make
