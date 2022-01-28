@@ -1,6 +1,8 @@
 $ModLoad imudp
 $UDPServerAddress 127.0.0.1
 $UDPServerRun 514
+$MaxMessageSize 64k
+$FileCreateMode 0600
 
 $template HAProxy,"%TIMESTAMP% %syslogseverity-text:::UPPERCASE%: %msg%\n"
 $template HAProxyAccess,"%msg%\n"
