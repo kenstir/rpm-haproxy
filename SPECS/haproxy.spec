@@ -38,7 +38,7 @@ BuildRequires: gcc openssl-devel
 BuildRequires: openssl-devel
 
 Requires(pre):      shadow-utils
-Requires:           rsyslog
+#kenstir#Requires:           rsyslog
 
 %if 0%{?el6} || 0%{?amzn1}
 Requires(post):     chkconfig, initscripts
@@ -139,7 +139,7 @@ USE_PROMEX="USE_PROMEX=1"
 %{__install} -c -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}/haproxy.cfg
 %{__install} -c -m 644 examples/errorfiles/*.http %{buildroot}%{_sysconfdir}/%{name}/errors/
 %{__install} -c -m 644 doc/%{name}.1 %{buildroot}%{_mandir}/man1/
-%{__install} -c -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/rsyslog.d/49-%{name}.conf
+#kenstir#%{__install} -c -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/rsyslog.d/49-%{name}.conf
 %{__install} -c -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 
 %{__install} -p -m 0755 ./admin/halog/halog %{buildroot}%{_bindir}/halog
@@ -171,7 +171,7 @@ exit 0
 %post
 %if 0%{?el7} || 0%{?amzn2} || 0%{?el8} || 0%{?el9}
 %systemd_post %{name}.service
-systemctl reload-or-try-restart rsyslog.service
+#kenstir#systemctl reload-or-try-restart rsyslog.service
 %endif
 
 %if 0%{?el6} || 0%{?amzn1}
@@ -194,7 +194,7 @@ fi
 %postun
 %if 0%{?el7} || 0%{?amzn2} || 0%{?el8} || 0%{?el9}
 %systemd_postun_with_restart %{name}.service
-systemctl reload-or-try-restart rsyslog.service
+#kenstir#systemctl reload-or-try-restart rsyslog.service
 %endif
 
 %if 0%{?el6} || 0%{?amzn1}
@@ -217,7 +217,7 @@ fi
 %attr(0755,root,root) %{_sbindir}/%{name}
 %dir %{_localstatedir}/log/%{name}
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
-%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/rsyslog.d/49-%{name}.conf
+#kenstir#%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/rsyslog.d/49-%{name}.conf
 %{_bindir}/halog
 %{_bindir}/iprange
 %{_bindir}/ip6range
